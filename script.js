@@ -249,6 +249,33 @@
 
         window.addEventListener('scroll', onScroll, { passive: true });
     }
+
+    /* ── Scroll hint follows page scroll ── */
+    const scrollHint = document.querySelector('.scroll-hint');
+    const heroSection = document.querySelector('.hero');
+
+    if (scrollHint && heroSection && !prefersReduced) {
+        function updateScrollHint() {
+            const heroHeight = heroSection.offsetHeight;
+            const progress = Math.min(window.scrollY / Math.max(heroHeight * 0.75, 1), 1);
+
+            scrollHint.style.transform = `translateX(-50%) translateY(${progress * 48}px)`;
+            scrollHint.style.opacity = String(1 - progress);
+
+            if (progress >= 1) {
+                scrollHint.style.visibility = 'hidden';
+                scrollHint.style.pointerEvents = 'none';
+            } else {
+                scrollHint.style.visibility = 'visible';
+                scrollHint.style.pointerEvents = '';
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollHint, { passive: true });
+        window.addEventListener('resize', updateScrollHint, { passive: true });
+        updateScrollHint();
+    }
+
     const phrases = [
     'Software Engineer @ Jio Platforms',
     'Building Scalable Microservices',
