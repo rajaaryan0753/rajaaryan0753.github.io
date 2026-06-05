@@ -102,16 +102,24 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: var(--sans);
 }
 
 body {
-    font-family: var(--sans);
+    font-family: inherit;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
 }
 
 body::before {
@@ -161,8 +169,8 @@ img {
 
 .boot-inner {
     width: min(560px, 90vw);
-    font-family: var(--mono);
     font-size: 0.82rem;
+    font-weight: 500;
 }
 
 .boot-title {
@@ -211,18 +219,19 @@ img {
 }
 
 .nav-inner {
-    max-width: calc(var(--max) + var(--gutter) * 2);
+    max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--gutter);
     height: 56px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
+    justify-self: start;
 }
 
 .nav-initials {
@@ -235,9 +244,8 @@ img {
     background: var(--green-dim);
     border: 1px solid var(--initials-border);
     color: var(--green);
-    font-family: var(--mono);
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .nav-tools {
@@ -245,6 +253,7 @@ img {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    justify-self: end;
 }
 
 .theme-toggle {
@@ -290,6 +299,7 @@ img {
 .nav-links {
     display: flex;
     gap: 32px;
+    justify-self: center;
 }
 
 .nav-links a {
@@ -364,8 +374,8 @@ main {
 }
 
 .cmd {
-    font-family: var(--mono);
     font-size: 0.9rem;
+    font-weight: 600;
     color: var(--green);
     margin-bottom: 16px;
 }
@@ -399,6 +409,7 @@ main {
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
 }
 
@@ -427,25 +438,29 @@ main {
     bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
+    color: var(--muted);
+    will-change: transform, opacity;
+}
+
+.scroll-hint-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    color: var(--muted);
-    font-family: var(--mono);
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    animation: bob 2s ease-in-out infinite;
+    animation: scroll-hint-bob 2s ease-in-out infinite;
 }
 
 .scroll-hint:hover {
     color: var(--dim);
 }
 
-@keyframes bob {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
+@keyframes scroll-hint-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
 }
 
 /* ── Buttons ── */
@@ -469,11 +484,14 @@ main {
 }
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 11px 22px;
     border-radius: 8px;
     font-size: 0.875rem;
     font-weight: 600;
+    line-height: 1;
     transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
 
@@ -622,11 +640,12 @@ main {
 }
 
 .exp-date {
-    font-family: var(--mono);
     font-size: 0.78rem;
+    font-weight: 500;
     color: var(--muted);
     white-space: nowrap;
     flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
 }
 
 .exp-bullets {
@@ -662,6 +681,9 @@ main {
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -703,6 +725,11 @@ main {
     font-size: 0.875rem;
     margin-bottom: 16px;
     line-height: 1.65;
+    flex: 1;
+}
+
+.project-card .tags {
+    margin-top: auto;
 }
 .role-container{
     margin: 12px 0 24px;
@@ -710,9 +737,9 @@ main {
 
 #rotating-text {
     color: var(--accent-type);
-    font-family: 'JetBrains Mono', monospace;
     font-size: 1.7rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
 #rotating-text::after {
@@ -799,8 +826,8 @@ main {
 }
 
 .blog-meta {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
+    font-weight: 500;
     color: var(--muted);
     margin-bottom: 12px;
 }
@@ -851,8 +878,8 @@ main {
 
 .post-back {
     display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.85rem;
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--muted);
     margin-bottom: 32px;
     transition: color 0.2s;
@@ -867,8 +894,8 @@ main {
 }
 
 .post-meta {
-    font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: var(--muted);
     margin-bottom: 12px;
 }
@@ -938,8 +965,8 @@ main {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     color: var(--dim);
-    font-family: var(--mono);
-    font-size: 0.85rem;
+    font-size: 0.875rem;
+    font-weight: 500;
     transition: border-color 0.2s, color 0.2s;
 }
 
@@ -1001,7 +1028,7 @@ footer {
     padding: 40px 24px 48px;
     color: var(--muted);
     font-size: 0.8rem;
-    font-family: var(--mono);
+    font-weight: 500;
     border-top: 1px solid var(--border);
 }
 
@@ -1016,6 +1043,34 @@ footer {
 
     .hero-inner {
         gap: 64px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.25rem, 4.5vw, 4.25rem);
+    }
+
+    #rotating-text {
+        font-size: 1.9rem;
+    }
+
+    .section-title {
+        font-size: 1.65rem;
+    }
+
+    .exp-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-top h3 {
+        font-size: 1.1rem;
+    }
+
+    .blog-category-title {
+        font-size: 1.25rem;
+    }
+
+    .blog-card-top h3 {
+        font-size: 1.15rem;
     }
 
     .hero-tagline {
@@ -1077,30 +1132,6 @@ footer {
     .blog-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-
-    #contact.section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px 56px;
-        align-items: start;
-    }
-
-    #contact .section-title {
-        grid-column: 1;
-        margin-bottom: 12px;
-    }
-
-    .contact-intro {
-        grid-column: 1;
-        max-width: none;
-        margin-bottom: 0;
-    }
-
-    .contact-links {
-        grid-column: 2;
-        grid-row: 1 / span 3;
-        align-self: center;
-    }
 }
 
 @media (min-width: 1280px) {
@@ -1110,21 +1141,63 @@ footer {
     }
 
     .section-title {
-        font-size: 1.45rem;
+        font-size: 1.9rem;
     }
 
     .hero h1 {
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
 
     #rotating-text {
-        font-size: 1.85rem;
+        font-size: 2.1rem;
+    }
+
+    .exp-header h3 {
+        font-size: 1.35rem;
+    }
+
+    .project-top h3 {
+        font-size: 1.2rem;
+    }
+
+    .blog-category-title {
+        font-size: 1.4rem;
+    }
+
+    .blog-card-top h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .section-title {
+        font-size: 2.1rem;
+    }
+
+    .hero h1 {
+        font-size: 5rem;
+    }
+
+    #rotating-text {
+        font-size: 2.25rem;
     }
 }
 
 /* ── Mobile ── */
 
 @media (max-width: 768px) {
+
+    .nav-inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-brand,
+    .nav-links,
+    .nav-tools {
+        justify-self: auto;
+    }
 
     .nav-toggle {
         display: flex;
