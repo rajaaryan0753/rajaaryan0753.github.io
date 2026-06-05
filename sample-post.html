@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <meta name="description" content="Designing a URL Shortener at Scale — Raj Aaryan">
+    <title>Designing a URL Shortener at Scale · Raj Aaryan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="icon-sun" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-16h2v3h-2V2Zm0 19h2v3h-2v-3ZM2 11h3v2H2v-2Zm19 0h3v2h-3v-2ZM4.22 4.22l2.12 2.12-1.41 1.41-2.12-2.12 1.41-1.41Zm13.24 13.24 2.12 2.12-1.41 1.41-2.12-2.12 1.41-1.41ZM19.78 4.22l-1.41 1.41-2.12-2.12 1.41-1.41 2.12 2.12ZM6.34 17.66l-1.41 1.41-2.12-2.12 1.41-1.41 2.12 2.12Z"/>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"/>
+        </symbol>
+    </svg>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../index.html#blog" class="nav-brand">
+                <span class="nav-initials">RA</span>
+            </a>
+            <div class="nav-tools">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light mode">
+                    <svg class="theme-icon theme-icon--sun" width="18" height="18" aria-hidden="true"><use href="#icon-sun"/></svg>
+                    <svg class="theme-icon theme-icon--moon" width="18" height="18" aria-hidden="true"><use href="#icon-moon"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="post-page">
+        <a href="../index.html#blog" class="post-back">← Back to blog</a>
+
+        <article class="post-article">
+            <header class="post-header">
+                <p class="post-meta">12 Nov 2025 · 6 min read</p>
+                <h1>Designing a URL Shortener at Scale</h1>
+                <div class="tags">
+                    <span class="tag">System Design</span>
+                    <span class="tag">Redis</span>
+                </div>
+            </header>
+
+            <div class="post-body">
+                <p>
+                    Duplicate <code>blog/sample-post.html</code>, add an entry in <code>blogs.js</code>
+                    with <code>category: 'design'</code> or <code>category: 'equity-research'</code>,
+                    and it will appear under that section on the homepage.
+                </p>
+                <h2>Read path vs write path</h2>
+                <p>
+                    Short links are read-heavy. Cache hot mappings in Redis, use a consistent hash for
+                    shard keys, and keep the redirect API stateless so you can scale horizontally.
+                </p>
+                <h2>What to cover next</h2>
+                <ul>
+                    <li>Base62 encoding and collision handling</li>
+                    <li>TTL and analytics without slowing redirects</li>
+                    <li>Capacity estimates for QPS and storage</li>
+                </ul>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Raj Aaryan · <a href="../index.html">Portfolio</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
