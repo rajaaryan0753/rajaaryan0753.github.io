@@ -32,7 +32,7 @@
         { text: '› Establishing secure connection', cls: 'info-line' },
         { text: '✓ Authenticated as raj', cls: 'ok-line' },
         { text: '$ load-portfolio --mode=production', cls: 'cmd-line' },
-        { text: '› Compiling 3+ years of backend engineering', cls: 'info-line' },
+        { text: '› Compiling ~4 years of backend engineering', cls: 'info-line' },
         { text: '✓ Ready. Welcome.', cls: 'ok-line' },
     ];
 
