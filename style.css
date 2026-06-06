@@ -608,6 +608,9 @@ main {
 /* ── Experience ── */
 
 .exp-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -669,7 +672,7 @@ main {
 }
 
 .exp-card .tags {
-    margin-top: 4px;
+    margin-top: auto;
 }
 
 /* ── Projects ── */
@@ -730,6 +733,39 @@ main {
 
 .project-card .tags {
     margin-top: auto;
+}
+
+.project-card-link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card-link:hover {
+    color: inherit;
+}
+
+.project-repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 16px;
+    width: fit-content;
+    transition: color 0.2s;
+}
+
+.project-repo-link:hover {
+    color: var(--green);
+}
+
+.project-card--linked:hover .project-arrow {
+    color: var(--green);
+    transform: translate(2px, -2px);
 }
 .role-container{
     margin: 12px 0 24px;
