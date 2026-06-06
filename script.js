@@ -281,7 +281,7 @@
     'Building Scalable Microservices',
     'Spring Boot • Kafka • Redis',
     'Distributed Systems Engineer',
-    'Elasticsearch • AWS',
+    'Elasticsearch • MariaDb •DynamoDb',
     'System Design Enthusiast'
 ];
 
