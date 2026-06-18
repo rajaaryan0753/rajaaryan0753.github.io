@@ -277,13 +277,12 @@
     }
 
     const phrases = [
-    'Software Engineer @ Jio Platforms',
-    'Building Scalable Microservices',
-    'Spring Boot • Kafka • Redis',
-    'Distributed Systems Engineer',
-    'Elasticsearch • MariaDb •DynamoDb',
-    'System Design Enthusiast'
-];
+        'Software Development Engineer @ Jio Platforms',
+        '20K+ Orders/Day · Order Lifecycle Microservices',
+        'Camunda BPM · Kafka · Spring Boot',
+        'Elasticsearch · Kubernetes · Observability',
+        'Distributed Systems & System Design',
+    ];
 
 const rotatingText = document.getElementById('rotating-text');
 
